@@ -34,8 +34,7 @@ export default function Solutions({ config }: Props) {
       >
         {/* Left: Title + Nav Arrows */}
         <div
-          className="flex flex-col gap-10 shrink-0"
-          style={{ width: 'clamp(160px, 18vw, 310px)' }}
+          className="flex flex-row lg:flex-col items-center lg:items-start justify-between lg:justify-start gap-4 lg:gap-10 shrink-0 w-full lg:w-[clamp(160px,18vw,310px)]"
         >
           <h2
             className="font-extrabold capitalize leading-none"

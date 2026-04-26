@@ -102,7 +102,7 @@ export default function SolutionsSection() {
             </div>
             <div
               className="relative shrink-0 w-full lg:w-[52%] rounded-2xl overflow-hidden"
-              style={{ minHeight: 'clamp(130px, 20vw, 320px)' }}
+              style={{ minHeight: 'clamp(200px, 20vw, 320px)' }}
             >
               <Image
                 src={sol.image}

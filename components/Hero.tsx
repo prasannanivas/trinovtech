@@ -11,7 +11,7 @@ export default function Hero({ config }: Props) {
       style={{ backgroundColor: 'var(--color-bg1)', fontFamily: 'var(--font-heading)' }}
     >
       <div
-        className="mx-auto flex items-center justify-between"
+        className="mx-auto flex flex-row items-center justify-between"
         style={{
           maxWidth: '1920px',
           paddingLeft: 'clamp(1.5rem, 5.5vw, 70px)',
@@ -22,7 +22,7 @@ export default function Hero({ config }: Props) {
         }}
       >
         {/* Left: Text + CTA */}
-        <div className="flex flex-col gap-6 flex-1 max-w-[710px] pr-8">
+        <div className="flex flex-col gap-4 lg:gap-6 flex-1 lg:max-w-[710px] lg:pr-8">
           <div className="flex flex-col gap-6">
             <h1
               className="font-extrabold capitalize leading-tight"
@@ -111,11 +111,12 @@ export default function Hero({ config }: Props) {
           </div>
         </div>
 
-        {/* Mobile: single image below text */}
-        <div className="lg:hidden mt-8 w-full flex justify-center">
-          <div className="relative w-[160px] h-[280px] shadow-[5px_10px_15px_0px_rgba(0,0,0,0.25)]">
-            <Image src="/assets/hero-img2.png" alt="hero" fill className="object-cover" />
-          </div>
+        {/* Mobile: small image to the right of text */}
+        <div
+          className="lg:hidden shrink-0 ml-4 rounded-xl overflow-hidden shadow-[5px_10px_20px_rgba(0,0,0,0.2)]"
+          style={{ width: '90px', height: '150px' }}
+        >
+          <Image src="/assets/hero-img2.png" alt="hero" width={90} height={150} className="object-cover w-full h-full" />
         </div>
       </div>
     </section>

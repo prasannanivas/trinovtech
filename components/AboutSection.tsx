@@ -10,10 +10,12 @@ function ImageStack({
   leftSrc: string;
 }) {
   return (
-    <div
-      className="relative shrink-0 hidden lg:block"
-      style={{ width: '45%', minHeight: '416px' }}
-    >
+    <>
+      {/* Desktop: full stacked effect */}
+      <div
+        className="relative shrink-0 hidden lg:block"
+        style={{ width: '45%', minHeight: '416px' }}
+      >
       <div className="relative w-full h-full" style={{ minHeight: '416px' }}>
         <Image src={bgSrc} alt="" fill className="object-cover rounded-2xl" sizes="45vw" />
       </div>
@@ -35,18 +37,41 @@ function ImageStack({
       >
         <Image src={leftSrc} alt="" fill className="object-cover" sizes="20vw" />
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 
-function TextBlock({ title, paragraphs }: { title: string; paragraphs: string[] }) {
+function TextBlock({
+  title,
+  paragraphs,
+  mobileIndex,
+}: {
+  title: string;
+  paragraphs: string[];
+  mobileIndex: number;
+}) {
+  const isRight = mobileIndex % 2 === 1;
+  const stepNum = String(mobileIndex + 1).padStart(2, '0');
+
   return (
     <div
       className="flex flex-col gap-5 shrink-0 w-full lg:w-[42%]"
       style={{ fontFamily: 'var(--font-heading)' }}
     >
+      {/* Mobile only: faded step number + horizontal rule */}
+      <div className={`flex items-center gap-3 lg:hidden ${isRight ? 'flex-row-reverse' : ''}`}>
+        <span
+          className="font-black leading-none shrink-0"
+          style={{ fontSize: '3.5rem', color: 'var(--color-primary)', opacity: 0.15 }}
+        >
+          {stepNum}
+        </span>
+        <div className="flex-1 h-px" style={{ backgroundColor: 'var(--color-primary)', opacity: 0.2 }} />
+      </div>
+
       <h2
-        className="font-bold leading-tight capitalize"
+        className={`font-bold leading-tight capitalize ${isRight ? 'text-right lg:text-left' : 'text-left'}`}
         style={{ fontSize: 'clamp(1.3rem, 2.6vw, 42px)', color: 'var(--color-text)' }}
       >
         {title}
@@ -55,7 +80,7 @@ function TextBlock({ title, paragraphs }: { title: string; paragraphs: string[] 
         {paragraphs.map((p, i) => (
           <p
             key={i}
-            className="font-bold leading-relaxed capitalize"
+            className={`font-bold leading-relaxed capitalize ${isRight ? 'text-right lg:text-left' : 'text-left'}`}
             style={{
               fontSize: 'clamp(0.85rem, 1vw, 16px)',
               color: 'var(--color-brown)',
@@ -68,7 +93,7 @@ function TextBlock({ title, paragraphs }: { title: string; paragraphs: string[] 
       </div>
       <a
         href="#contact"
-        className="inline-flex items-center justify-center font-normal text-lg rounded-sm transition-opacity hover:opacity-90"
+        className={`inline-flex items-center justify-center font-normal text-lg rounded-sm transition-opacity hover:opacity-90 ${isRight ? 'self-end lg:self-start' : 'self-start'}`}
         style={{
           backgroundColor: 'var(--color-primary)',
           color: 'var(--color-bg1)',
@@ -92,6 +117,7 @@ function SubSection({
   bgSrc,
   rightSrc,
   leftSrc,
+  mobileIndex,
 }: {
   bg: string;
   reverse: boolean;
@@ -100,9 +126,22 @@ function SubSection({
   bgSrc: string;
   rightSrc: string;
   leftSrc: string;
+  mobileIndex: number;
 }) {
+  const isRight = mobileIndex % 2 === 1;
   return (
-    <div className="w-full overflow-hidden" style={{ backgroundColor: bg, minHeight: 'clamp(200px, 28vw, 455px)' }}>
+    <div
+      className="relative w-full overflow-hidden"
+      style={{ backgroundColor: bg, minHeight: 'clamp(200px, 28vw, 455px)' }}
+    >
+      {/* Mobile only: side accent bar */}
+      <div
+        className={`absolute top-0 bottom-0 w-1 lg:hidden`}
+        style={{
+          [isRight ? 'right' : 'left']: 0,
+          background: 'linear-gradient(to bottom, transparent, var(--color-primary), transparent)',
+        }}
+      />
       <div
         className={`mx-auto flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center justify-between gap-6 lg:gap-10`}
         style={{
@@ -110,7 +149,7 @@ function SubSection({
           padding: 'clamp(2rem, 4vw, 65px) clamp(1.5rem, 3.5vw, 52px)',
         }}
       >
-        <TextBlock title={title} paragraphs={paragraphs} />
+        <TextBlock title={title} paragraphs={paragraphs} mobileIndex={mobileIndex} />
         <ImageStack bgSrc={bgSrc} rightSrc={rightSrc} leftSrc={leftSrc} />
       </div>
     </div>
@@ -149,6 +188,7 @@ export default function AboutSection() {
         bgSrc="/assets/about/who-bg.png"
         rightSrc="/assets/about/who-right.png"
         leftSrc="/assets/about/who-left.png"
+        mobileIndex={0}
       />
       <SubSection
         bg="var(--color-bg1)"
@@ -161,6 +201,7 @@ export default function AboutSection() {
         bgSrc="/assets/about/who-bg.png"
         rightSrc="/assets/about/problem-right.png"
         leftSrc="/assets/about/problem-left.png"
+        mobileIndex={1}
       />
       <SubSection
         bg="var(--color-bg2)"
@@ -173,6 +214,7 @@ export default function AboutSection() {
         bgSrc="/assets/about/who-bg.png"
         rightSrc="/assets/about/whatwedo-right.png"
         leftSrc="/assets/about/whatwedo-left.png"
+        mobileIndex={2}
       />
       <SubSection
         bg="var(--color-bg1)"
@@ -185,6 +227,7 @@ export default function AboutSection() {
         bgSrc="/assets/about/who-bg.png"
         rightSrc="/assets/about/expertise-right.png"
         leftSrc="/assets/about/expertise-left.png"
+        mobileIndex={3}
       />
       <SubSection
         bg="var(--color-bg2)"
@@ -197,6 +240,7 @@ export default function AboutSection() {
         bgSrc="/assets/about/process-bg.png"
         rightSrc="/assets/about/process-right.png"
         leftSrc="/assets/about/process-left.png"
+        mobileIndex={4}
       />
     </section>
   );

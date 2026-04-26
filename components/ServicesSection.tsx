@@ -138,7 +138,7 @@ export default function ServicesSection() {
 
             <div
               className="relative shrink-0 w-full lg:w-[50%] rounded-2xl overflow-hidden"
-              style={{ minHeight: 'clamp(130px, 20vw, 320px)' }}
+              style={{ minHeight: 'clamp(200px, 20vw, 320px)' }}
             >
               {svc.image ? (
                 <Image
