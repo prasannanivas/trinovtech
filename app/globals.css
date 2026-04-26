@@ -1,26 +1,127 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Colors */
+  --color-primary: #C62828;
+  --color-accent: #FF7A00;
+  --color-bg1: #F1F5F9;
+  --color-bg2: #FFFFFF;
+  --color-text: #212121;
+  --color-muted: #898989;
+  --color-brown: #6D4C41;
+
+  /* Typography */
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-size-hero: 2rem;
+  --font-size-section: 2.6rem;
+  --font-size-card-title: 1.5rem;
+  --font-size-nav: 1rem;
+  --font-size-body: 1rem;
+
+  /* Spacing */
+  --section-padding-x: 4.375rem;
+  --section-padding-y: 2.875rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 78px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  background-color: var(--color-bg2);
+  color: var(--color-text);
+  margin: 0;
 }
+
+/* ── Premium Glow Theme ────────────────────────────────────────────────────── */
+[data-theme="glow"] h1,
+[data-theme="glow"] h2,
+[data-theme="glow"] h3 {
+  text-shadow:
+    0 0 12px var(--glow-color, transparent),
+    0 0 28px color-mix(in srgb, var(--glow-color, transparent) 60%, transparent),
+    0 0 60px color-mix(in srgb, var(--glow-color, transparent) 30%, transparent);
+}
+
+[data-theme="glow"] .glow-accent {
+  color: var(--color-accent);
+  text-shadow:
+    0 0 8px var(--color-accent),
+    0 0 24px color-mix(in srgb, var(--color-accent) 50%, transparent);
+}
+
+/* ── Hero Text Animations ──────────────────────────────────────────────────── */
+
+/* Shimmer — gradient sweep */
+@keyframes text-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.text-animate-shimmer {
+  background: linear-gradient(90deg,
+    var(--color-primary) 0%,
+    var(--color-accent)  40%,
+    var(--color-primary) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shimmer 2.5s linear infinite;
+}
+
+/* Glow Pulse */
+@keyframes glow-pulse {
+  0%, 100% { text-shadow: 0 0 6px currentColor; opacity: 1; }
+  50%       { text-shadow: 0 0 28px currentColor, 0 0 56px currentColor; opacity: 0.85; }
+}
+.text-animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Typewriter — clip-path reveal */
+@keyframes typewriter {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0%   0 0); }
+}
+.text-animate-typewriter {
+  animation: typewriter 1.8s steps(30, end) both;
+}
+
+/* Fade Up */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.text-animate-fade-up {
+  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Slide In */
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.text-animate-slide-in {
+  animation: slide-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Bounce In */
+@keyframes bounce-in {
+  0%   { transform: scale(0.4); opacity: 0; }
+  55%  { transform: scale(1.06); opacity: 0.9; }
+  75%  { transform: scale(0.95); }
+  100% { transform: scale(1);    opacity: 1; }
+}
+.text-animate-bounce-in {
+  display: inline-block;
+  animation: bounce-in 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
