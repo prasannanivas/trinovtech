@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { SiteConfig } from '@/lib/supabase';
+import HeroImages from '@/components/HeroImages';
 
 type Props = { config: SiteConfig };
 
@@ -25,7 +26,7 @@ export default function Hero({ config }: Props) {
         <div className="flex flex-col gap-4 lg:gap-6 flex-1 lg:max-w-[710px] lg:pr-8">
           <div className="flex flex-col gap-6">
             <h1
-              className="font-extrabold capitalize leading-tight"
+              className="font-extrabold capitalize leading-tight hero-text-anim"
               style={{
                 fontSize: 'clamp(1.25rem, 2.5vw, 33px)',
                 color: 'var(--color-text)',
@@ -50,7 +51,7 @@ export default function Hero({ config }: Props) {
               {config.hero_title_end}
             </h1>
             <p
-              className="font-normal leading-relaxed"
+              className="font-normal leading-relaxed hero-text-anim hero-text-anim-delay-1"
               style={{
                 fontSize: 'clamp(0.85rem, 1.1vw, 16px)',
                 color: 'var(--color-brown, #6D4C41)',
@@ -65,7 +66,7 @@ export default function Hero({ config }: Props) {
           {/* Know More Button */}
           <a
             href="#solutions"
-            className="inline-flex items-center gap-3 font-normal self-start transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-3 font-normal self-start transition-opacity hover:opacity-90 hero-text-anim hero-text-anim-delay-2"
             style={{
               backgroundColor: 'var(--color-primary)',
               color: 'var(--color-bg1)',
@@ -83,37 +84,12 @@ export default function Hero({ config }: Props) {
           </a>
         </div>
 
-        {/* Right: Staggered 3-column image grid */}
-        <div
-          className="relative hidden lg:block shrink-0"
-          style={{ width: '388px', height: '388px' }}
-        >
-          {/* Image 3 — leftmost column */}
-          <div
-            className="absolute overflow-hidden shadow-[5px_10px_15px_0px_rgba(0,0,0,0.25)]"
-            style={{ left: 0, top: 0, width: '114px', height: '345px' }}
-          >
-            <Image src="/assets/hero-img3.png" alt="hero 3" fill className="object-cover" />
-          </div>
-          {/* Image 2 — middle column (offset down 43px) */}
-          <div
-            className="absolute overflow-hidden shadow-[5px_10px_15px_0px_rgba(0,0,0,0.25)]"
-            style={{ left: '142px', top: '43px', width: '114px', height: '345px' }}
-          >
-            <Image src="/assets/hero-img2.png" alt="hero 2" fill className="object-cover" />
-          </div>
-          {/* Image 1 — rightmost column */}
-          <div
-            className="absolute overflow-hidden shadow-[5px_10px_15px_0px_rgba(0,0,0,0.25)]"
-            style={{ left: '274px', top: 0, width: '114px', height: '345px' }}
-          >
-            <Image src="/assets/hero-img1.png" alt="hero 1" fill className="object-cover" />
-          </div>
-        </div>
+        {/* Right: Staggered 3-column image grid — scroll-driven parallax */}
+        <HeroImages />
 
         {/* Mobile: small image to the right of text */}
         <div
-          className="lg:hidden shrink-0 ml-4 rounded-xl overflow-hidden shadow-[5px_10px_20px_rgba(0,0,0,0.2)]"
+          className="lg:hidden shrink-0 ml-4 rounded-xl overflow-hidden shadow-[5px_10px_20px_rgba(0,0,0,0.2)] hero-text-anim hero-text-anim-delay-3"
           style={{ width: '90px', height: '150px' }}
         >
           <Image src="/assets/hero-img2.png" alt="hero" width={90} height={150} className="object-cover w-full h-full" />

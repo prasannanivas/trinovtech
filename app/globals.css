@@ -125,3 +125,51 @@ body {
   animation: bounce-in 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
+/* ── Premium Scroll Reveal (Apple-style) ───────────────────────────────────── */
+
+/* Base: hidden until intersection triggers .sr-visible */
+.sr {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+.sr-up    { transform: translateY(52px); }
+.sr-left  { transform: translateX(-52px); }
+.sr-right { transform: translateX(52px); }
+.sr-scale { transform: scale(0.93) translateY(20px); }
+
+/* Visible state — applied by IntersectionObserver via JS */
+.sr.sr-visible {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-delay: var(--sr-delay, 0ms);
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .sr { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* ── Hero load animation (CSS, no JS needed) ──────────────────────────────── */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-slide-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.hero-text-anim {
+  animation: hero-rise 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.hero-text-anim-delay-1 { animation-delay: 0.15s; }
+.hero-text-anim-delay-2 { animation-delay: 0.28s; }
+.hero-text-anim-delay-3 { animation-delay: 0.42s; }
+
+.hero-img-anim {
+  animation: hero-slide-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+}
+

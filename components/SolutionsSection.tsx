@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import ScrollReveal from '@/components/ScrollReveal';
 
 const SOLUTIONS = [
   {
@@ -35,6 +36,7 @@ export default function SolutionsSection() {
   return (
     <section id="solutions" className="w-full scroll-mt-24">
       {/* Section Hero Banner */}
+      <ScrollReveal direction="up">
       <div
         className="w-full flex flex-col items-center justify-center text-center"
         style={{
@@ -51,6 +53,7 @@ export default function SolutionsSection() {
           Our solutions are designed to simplify complexity and drive meaningful business outcomes.
         </p>
       </div>
+      </ScrollReveal>
 
       {SOLUTIONS.map((sol, idx) => (
         <div
@@ -61,6 +64,7 @@ export default function SolutionsSection() {
             minHeight: 'clamp(200px, 28vw, 455px)',
           }}
         >
+          <ScrollReveal direction="up" threshold={0.1}>
           <div
             className={`mx-auto flex flex-col ${sol.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center justify-between gap-6 lg:gap-12`}
             style={{
@@ -113,6 +117,7 @@ export default function SolutionsSection() {
               />
             </div>
           </div>
+          </ScrollReveal>
         </div>
       ))}
     </section>

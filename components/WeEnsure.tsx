@@ -1,5 +1,10 @@
 import Image from 'next/image';
 import { SiteConfig } from '@/lib/supabase';
+import ScrollReveal from '@/components/ScrollReveal';
+
+// Each card alternates: left | right | left | right ...
+// Gives the "objects flying in from both sides" effect
+const DIRECTIONS: ('left' | 'right')[] = ['left', 'right', 'left', 'right', 'left'];
 
 type Props = { config: SiteConfig };
 
@@ -22,6 +27,7 @@ export default function WeEnsure({ config }: Props) {
         }}
       >
         {/* Title */}
+        <ScrollReveal direction="up">
         <h2
           className="font-black text-center"
           style={{
@@ -32,18 +38,23 @@ export default function WeEnsure({ config }: Props) {
         >
           We Ensure
         </h2>
+        </ScrollReveal>
 
         {/* Row 1: 3 items */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8 justify-items-center w-full">
           {config.ensures.slice(0, 3).map((item, i) => (
-            <EnsureCard key={i} item={item} />
+            <ScrollReveal key={i} direction={DIRECTIONS[i]} delay={i * 80}>
+              <EnsureCard item={item} />
+            </ScrollReveal>
           ))}
         </div>
 
         {/* Row 2: 2 items centered */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-12 gap-x-8 justify-items-center max-w-[900px] mx-auto w-full">
           {config.ensures.slice(3).map((item, i) => (
-            <EnsureCard key={i + 3} item={item} />
+            <ScrollReveal key={i + 3} direction={DIRECTIONS[i + 3]} delay={i * 80}>
+              <EnsureCard item={item} />
+            </ScrollReveal>
           ))}
         </div>
       </div>

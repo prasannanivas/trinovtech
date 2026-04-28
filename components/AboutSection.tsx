@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import ScrollReveal from '@/components/ScrollReveal';
 
 function ImageStack({
   bgSrc,
@@ -142,6 +143,7 @@ function SubSection({
           background: 'linear-gradient(to bottom, transparent, var(--color-primary), transparent)',
         }}
       />
+      <ScrollReveal direction="up" threshold={0.08}>
       <div
         className={`mx-auto flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center justify-between gap-6 lg:gap-10`}
         style={{
@@ -152,6 +154,7 @@ function SubSection({
         <TextBlock title={title} paragraphs={paragraphs} mobileIndex={mobileIndex} />
         <ImageStack bgSrc={bgSrc} rightSrc={rightSrc} leftSrc={leftSrc} />
       </div>
+      </ScrollReveal>
     </div>
   );
 }
@@ -160,6 +163,7 @@ export default function AboutSection() {
   return (
     <section id="about" className="w-full scroll-mt-24">
       {/* Section Hero Banner */}
+      <ScrollReveal direction="up">
       <div
         className="w-full flex flex-col items-center justify-center text-center"
         style={{
@@ -176,6 +180,7 @@ export default function AboutSection() {
           At TrinovTech, we transform complex challenges into simple, scalable solutions.
         </p>
       </div>
+      </ScrollReveal>
 
       <SubSection
         bg="var(--color-bg2)"

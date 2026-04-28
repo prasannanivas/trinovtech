@@ -1,13 +1,16 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { SiteConfig } from '@/lib/supabase';
+import ScrollReveal from '@/components/ScrollReveal';
 
 type Props = { config: SiteConfig };
 
 export default function Solutions({ config }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
 
   const scroll = (dir: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -33,6 +36,7 @@ export default function Solutions({ config }: Props) {
         }}
       >
         {/* Left: Title + Nav Arrows */}
+        <ScrollReveal direction="left" threshold={0.1}>
         <div
           className="flex flex-row lg:flex-col items-center lg:items-start justify-between lg:justify-start gap-4 lg:gap-10 shrink-0 w-full lg:w-[clamp(160px,18vw,310px)]"
         >
@@ -72,6 +76,7 @@ export default function Solutions({ config }: Props) {
             </button>
           </div>
         </div>
+        </ScrollReveal>
 
         {/* Right: Scrollable Cards */}
         <div
@@ -80,8 +85,8 @@ export default function Solutions({ config }: Props) {
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' } as React.CSSProperties}
         >
           {config.solutions.map((solution, i) => (
+            <ScrollReveal key={i} direction="up" delay={i * 80} threshold={0.05}>
             <div
-              key={i}
               className="flex flex-col gap-[45px] shrink-0"
               style={{ width: 'clamp(170px, 15vw, 260px)' }}
             >
@@ -130,6 +135,7 @@ export default function Solutions({ config }: Props) {
                 </a>
               </div>
             </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

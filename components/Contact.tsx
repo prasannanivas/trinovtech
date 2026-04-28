@@ -1,6 +1,7 @@
 'use client';
 
 import { SiteConfig } from '@/lib/supabase';
+import ScrollReveal from '@/components/ScrollReveal';
 
 type Props = { config: SiteConfig };
 
@@ -17,18 +18,23 @@ export default function Contact({ config }: Props) {
       style={{ backgroundColor: 'var(--color-bg2)', fontFamily: 'var(--font-heading)' }}
     >
       <div className="max-w-xl mx-auto flex flex-col gap-6 items-center text-center">
+        <ScrollReveal direction="up">
         <h2
           className="font-extrabold capitalize"
           style={{ fontSize: 'clamp(1.3rem, 2vw, 2rem)', color: 'var(--color-text)' }}
         >
           Let&apos;s Build Something Great
         </h2>
+        </ScrollReveal>
+        <ScrollReveal direction="up" delay={100}>
         <p
           className="leading-relaxed"
           style={{ fontSize: 'clamp(0.8rem, 0.95vw, 1rem)', color: 'var(--color-brown)', fontFamily: 'var(--font-body)' }}
         >
           Reach out to our team and let&apos;s discuss how TRINOVTECH can power your next project.
         </p>
+        </ScrollReveal>
+        <ScrollReveal direction="up" delay={200} className="w-full">
         <form
           className="flex flex-col gap-4 w-full max-w-xl"
           onSubmit={(e) => e.preventDefault()}
@@ -81,8 +87,10 @@ export default function Contact({ config }: Props) {
             {config.cta_label}
           </button>
         </form>
+        </ScrollReveal>
 
         {/* Reach directly */}
+        <ScrollReveal direction="up" delay={100} className="w-full">
         <div className="flex flex-col gap-3 w-full pt-2">
           <div className="flex items-center gap-3">
             <div className="flex-1 h-px" style={{ backgroundColor: 'var(--color-muted)', opacity: 0.4 }} />
@@ -140,6 +148,7 @@ export default function Contact({ config }: Props) {
             </a>
           </div>
         </div>
+        </ScrollReveal>
       </div>
     </section>
   );
