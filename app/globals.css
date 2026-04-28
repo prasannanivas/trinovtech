@@ -28,9 +28,29 @@
   box-sizing: border-box;
 }
 
+/* ── Spider scrollbar leg animations ──────────────────────────────────────── */
+@keyframes spider-legs-left-walk {
+  0%, 100% { transform: rotate(-10deg); }
+  50%       { transform: rotate(10deg); }
+}
+@keyframes spider-legs-right-walk {
+  0%, 100% { transform: rotate(10deg); }
+  50%       { transform: rotate(-10deg); }
+}
+.spider-walking .spider-legs-left {
+  animation: spider-legs-left-walk 0.2s ease-in-out infinite;
+}
+.spider-walking .spider-legs-right {
+  animation: spider-legs-right-walk 0.2s ease-in-out infinite;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 78px;
+  scrollbar-width: none; /* Firefox */
+}
+html::-webkit-scrollbar {
+  display: none; /* Chrome / Safari / Edge */
 }
 
 body {

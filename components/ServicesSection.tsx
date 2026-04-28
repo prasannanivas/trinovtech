@@ -142,8 +142,8 @@ export default function ServicesSection() {
       </ScrollReveal>
 
       {/* ── Sticky scroll showcase ────────────────────────────────────────── */}
-      {/* Tall outer container — gives 100 vh of scroll distance per service */}
-      <div ref={containerRef} style={{ height: `${SERVICES.length * 100}vh` }}>
+      {/* Tall outer container — gives scroll distance per service */}
+      <div ref={containerRef} style={{ height: `${SERVICES.length * 65}vh` }}>
 
         {/* Sticky inner — stays locked to viewport while outer scrolls */}
         <motion.div
