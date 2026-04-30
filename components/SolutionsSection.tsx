@@ -9,25 +9,23 @@ const SOLUTIONS = [
     title: 'Enterprise & SaaS Solutions',
     description:
       'We build Enterprise and SaaS solutions that are scalable, secure, and easy to integrateâ€”helping businesses operate efficiently and grow with confidence.',
-    reverse: false,
-  },
+    reverse: false,    href: '/solutions/enterprise-saas',  },
   {
     title: 'Embedded Systems & IoT',
     description:
       'We deliver end-to-end embedded and IoT solutionsâ€”from hardware to softwareâ€”enabling all peripherals with reliable, scalable performance.',
-    reverse: true,
-  },
+    reverse: true,    href: '/solutions/embedded-iot',  },
   {
     title: 'System Integration & Deployment',
     description:
       'We connect IoT devices to backend systems using MQTT, HTTP, WebSockets, and APIsâ€”enabling real-time data, analytics, and seamless integration.',
-    reverse: false,
-  },
+    reverse: false,    href: '/solutions/devops',  },
   {
     title: 'Unified Digital Engineering',
     description:
       'One integrated solution combining data, cloud, and applications for scalable and seamless performance.',
     reverse: true,
+    href: '/solutions/unified-digital',
   },
 ];
 
@@ -288,7 +286,7 @@ function SolutionRow({ sol, idx }: { sol: (typeof SOLUTIONS)[0]; idx: number }) 
 
           {/* CTA */}
           <motion.a
-            href="#contact"
+            href={sol.href ?? '#contact'}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             transition={{ duration: 0.55, ease: EASE, delay: 0.48 }}
             className="inline-flex items-center justify-center font-semibold hover:opacity-80 transition-opacity self-start relative z-10"

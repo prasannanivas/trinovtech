@@ -209,6 +209,7 @@ export default function AboutSection() {
         bg="var(--color-bg1)"
         reverse={true}
         btnColor="#2acc14"
+        href="/problem-we-solve"
         title="Problem We Solve"
         paragraphs={[
           'We help your organization reduce development overhead with on-demand expertise—eliminating the need for large in-house teams and enabling faster, cost-efficient execution.',
@@ -223,6 +224,7 @@ export default function AboutSection() {
         bg="var(--color-bg2)"
         reverse={false}
         btnColor="#e8d741"
+        href="/what-we-do"
         title="What We Do"
         paragraphs={[
           'We design and deliver end-to-end solutions across embedded, IoT, cloud, and full-stack platforms—focused on scalable design and strong system integration.',
@@ -237,6 +239,7 @@ export default function AboutSection() {
         bg="var(--color-bg1)"
         reverse={true}
         btnColor="#3a43ed"
+        href="/our-expertise"
         title="Our Expertise"
         paragraphs={[
           'Our expertise spans Mortgage Applications, IoT, Automotive systems, E-commerce, EdTech, and data analytics—delivering practical, scalable solutions aligned with your business goals.',
@@ -251,6 +254,7 @@ export default function AboutSection() {
         bg="var(--color-bg2)"
         reverse={false}
         btnColor="#c9f270"
+        href="/process-we-follow"
         title="Process We Follow"
         paragraphs={[
           'We follow a structured approach from requirement gathering and system design to milestone-based development—ensuring clarity, transparency, and steady progress.',

@@ -11,6 +11,7 @@ const SOLUTIONS = [
       'We build Enterprise and SaaS solutions that are scalable, secure, and easy to integrate—helping businesses operate efficiently and grow with confidence.',
     image: '/assets/sol-enterprise.png',
     reverse: false,
+    href: '/solutions/enterprise-saas',
   },
   {
     title: 'Embedded Systems & IoT',
@@ -18,6 +19,7 @@ const SOLUTIONS = [
       'We deliver end-to-end embedded and IoT solutions—from hardware to software—enabling all peripherals with reliable, scalable performance.',
     image: '/assets/sol-embedded.png',
     reverse: true,
+    href: '/solutions/embedded-iot',
   },
   {
     title: 'System Integration & Deployment',
@@ -25,6 +27,7 @@ const SOLUTIONS = [
       'We connect IoT devices to backend systems using MQTT, HTTP, WebSockets, and APIs—enabling real-time data, analytics, and seamless integration.',
     image: '/assets/sol-devops.png',
     reverse: false,
+    href: '/solutions/devops',
   },
   {
     title: 'Unified Digital Engineering',
@@ -32,6 +35,7 @@ const SOLUTIONS = [
       'One integrated solution combining data, cloud, and applications for scalable and seamless performance.',
     image: '/assets/sol-data.png',
     reverse: true,
+    href: '/solutions/unified-digital',
   },
 ];
 
@@ -106,7 +110,7 @@ export default async function SolutionsPage() {
                 {sol.description}
               </p>
               <a
-                href="#contact"
+                href={sol.href ?? '#contact'}
                 className="inline-flex items-center justify-center font-normal text-lg transition-opacity hover:opacity-90"
                 style={{
                   backgroundColor: 'var(--color-primary)',
