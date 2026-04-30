@@ -48,11 +48,13 @@ function TextBlock({
   paragraphs,
   mobileIndex,
   btnColor,
+  href,
 }: {
   title: string;
   paragraphs: string[];
   mobileIndex: number;
   btnColor?: string;
+  href?: string;
 }) {
   const isRight = mobileIndex % 2 === 1;
   const stepNum = String(mobileIndex + 1).padStart(2, '0');
@@ -95,13 +97,13 @@ function TextBlock({
         ))}
       </div>
       <a
-        href="#contact"
-        className={`inline-flex items-center justify-center font-normal text-lg rounded-sm transition-opacity hover:opacity-90 ${isRight ? 'self-end lg:self-start' : 'self-start'}`}
+        href={href ?? '#contact'}
+        className={`inline-flex items-center justify-center font-normal text-lg rounded-sm transition-opacity hover:opacity-90 whitespace-nowrap ${isRight ? 'self-end lg:self-start' : 'self-start'}`}
         style={{
           backgroundColor: btnColor ?? 'var(--color-primary)',
           color: '#fff',
-          width: '101px',
           height: '32px',
+          padding: '0 18px',
           borderRadius: '4px',
           fontSize: '13px',
         }}
@@ -122,6 +124,7 @@ function SubSection({
   leftSrc,
   mobileIndex,
   btnColor,
+  href,
 }: {
   bg: string;
   reverse: boolean;
@@ -132,6 +135,7 @@ function SubSection({
   leftSrc: string;
   mobileIndex: number;
   btnColor?: string;
+  href?: string;
 }) {
   const isRight = mobileIndex % 2 === 1;
   return (
@@ -155,7 +159,7 @@ function SubSection({
           padding: 'clamp(2rem, 4vw, 65px) clamp(1.5rem, 3.5vw, 52px)',
         }}
       >
-        <TextBlock title={title} paragraphs={paragraphs} mobileIndex={mobileIndex} btnColor={btnColor} />
+        <TextBlock title={title} paragraphs={paragraphs} mobileIndex={mobileIndex} btnColor={btnColor} href={href} />
         <ImageStack bgSrc={bgSrc} rightSrc={rightSrc} leftSrc={leftSrc} />
       </div>
       </ScrollReveal>
@@ -190,6 +194,7 @@ export default function AboutSection() {
         bg="var(--color-bg2)"
         reverse={false}
         btnColor="#f9b61a"
+        href="/who-we-are"
         title="Who We Are"
         paragraphs={[
           'We are a trusted team of engineers and consultants delivering scalable solutions across embedded systems, IoT, cloud, and full-stack platforms—working closely with you for seamless execution.',
