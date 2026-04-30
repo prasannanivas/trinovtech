@@ -84,7 +84,15 @@ export default function Solutions({ config }: Props) {
           className="flex gap-10 overflow-x-auto pb-4 flex-1"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' } as React.CSSProperties}
         >
-          {config.solutions.map((solution, i) => (
+          {(() => {
+          const SOLUTION_HREFS = [
+            '/solutions/enterprise-saas',
+            '/solutions/embedded-iot',
+            '/solutions/devops',
+            '/solutions/unified-digital',
+            '/solutions/data-engineering',
+          ];
+          return config.solutions.map((solution, i) => (
             <ScrollReveal key={i} direction="up" delay={i * 80} threshold={0.05}>
             <div
               className="flex flex-col gap-[45px] shrink-0"
@@ -122,7 +130,7 @@ export default function Solutions({ config }: Props) {
                   {solution.title}
                 </h3>
                 <a
-                  href="#"
+                  href={SOLUTION_HREFS[i] ?? '#'}
                   className="flex items-center gap-2 font-medium capitalize underline"
                   style={{
                     fontSize: 'clamp(0.75rem, 0.9vw, 13px)',
@@ -136,7 +144,8 @@ export default function Solutions({ config }: Props) {
               </div>
             </div>
             </ScrollReveal>
-          ))}
+          ));
+        })()}
         </div>
       </div>
     </section>
