@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SpiderScrollbar from "@/components/SpiderScrollbar";
+import FloatingContact from "@/components/FloatingContact";
 
 export const metadata: Metadata = {
   title: "TRINOVTECH | End-to-End Technology Consulting",
@@ -17,6 +18,7 @@ export default function RootLayout({
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <SpiderScrollbar />
+        <FloatingContact />
         {children}
       </body>
     </html>

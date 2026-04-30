@@ -23,19 +23,27 @@ export default function HeroImages() {
   const y2 = useTransform(scrollYProgress, [0, 1], ['0%', '-20%']);  // middle — medium
   const y3 = useTransform(scrollYProgress, [0, 1], ['0%', '-50%']);  // rightmost — slowest (goes furthest)
 
+  // Container is a square scaled to 76vh so columns fill the hero height nicely.
+  // All column positions/sizes are percentages of the container.
+  const sz = 'clamp(300px, 76vh, 590px)';
+
   return (
-    <div ref={sectionRef} className="relative hidden lg:block shrink-0 hero-img-anim" style={{ width: '388px', height: '388px' }}>
+    <div
+      ref={sectionRef}
+      className="relative hidden lg:block shrink-0 hero-img-anim"
+      style={{ width: sz, height: sz, marginRight: 'clamp(0.5rem, 3vw, 48px)' }}
+    >
       {/* Image 3 — leftmost column */}
       <motion.div
-        style={{ y: y1, left: 0, top: 0, width: '114px', height: '345px', position: 'absolute' }}
+        style={{ y: y1, left: '0%', top: 0, width: '29.4%', height: '89%', position: 'absolute' }}
         className="overflow-hidden shadow-[5px_10px_15px_0px_rgba(0,0,0,0.25)]"
       >
         <Image src="/assets/hero-img3.png" alt="hero 3" fill className="object-cover" />
       </motion.div>
 
-      {/* Image 2 — middle column (offset down 43px) */}
+      {/* Image 2 — middle column (offset down ~11%) */}
       <motion.div
-        style={{ y: y2, left: '142px', top: '43px', width: '114px', height: '345px', position: 'absolute' }}
+        style={{ y: y2, left: '36.6%', top: '11%', width: '29.4%', height: '89%', position: 'absolute' }}
         className="overflow-hidden shadow-[5px_10px_15px_0px_rgba(0,0,0,0.25)]"
       >
         <Image src="/assets/hero-img2.png" alt="hero 2" fill className="object-cover" />
@@ -43,7 +51,7 @@ export default function HeroImages() {
 
       {/* Image 1 — rightmost column */}
       <motion.div
-        style={{ y: y3, left: '274px', top: 0, width: '114px', height: '345px', position: 'absolute' }}
+        style={{ y: y3, left: '70.6%', top: 0, width: '29.4%', height: '89%', position: 'absolute' }}
         className="overflow-hidden shadow-[5px_10px_15px_0px_rgba(0,0,0,0.25)]"
       >
         <Image src="/assets/hero-img1.png" alt="hero 1" fill className="object-cover" />

@@ -21,7 +21,7 @@ export default function Solutions({ config }: Props) {
   return (
     <section
       id="solutions"
-      className="w-full overflow-hidden"
+      className="w-full overflow-hidden lg:h-[100dvh] lg:flex lg:items-center"
       style={{ backgroundColor: 'var(--color-bg2)', fontFamily: 'var(--font-heading)' }}
     >
       <div

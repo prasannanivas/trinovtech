@@ -15,9 +15,9 @@ function ImageStack({
       {/* Desktop: full stacked effect */}
       <div
         className="relative shrink-0 hidden lg:block"
-        style={{ width: '45%', minHeight: '416px' }}
+        style={{ width: '45%', height: 'clamp(380px, 80vh, 820px)' }}
       >
-      <div className="relative w-full h-full" style={{ minHeight: '416px' }}>
+      <div className="relative w-full h-full">
         <Image src={bgSrc} alt="" fill className="object-cover rounded-2xl" sizes="45vw" />
       </div>
       <div
@@ -47,10 +47,12 @@ function TextBlock({
   title,
   paragraphs,
   mobileIndex,
+  btnColor,
 }: {
   title: string;
   paragraphs: string[];
   mobileIndex: number;
+  btnColor?: string;
 }) {
   const isRight = mobileIndex % 2 === 1;
   const stepNum = String(mobileIndex + 1).padStart(2, '0');
@@ -96,8 +98,8 @@ function TextBlock({
         href="#contact"
         className={`inline-flex items-center justify-center font-normal text-lg rounded-sm transition-opacity hover:opacity-90 ${isRight ? 'self-end lg:self-start' : 'self-start'}`}
         style={{
-          backgroundColor: 'var(--color-primary)',
-          color: 'var(--color-bg1)',
+          backgroundColor: btnColor ?? 'var(--color-primary)',
+          color: '#fff',
           width: '101px',
           height: '32px',
           borderRadius: '4px',
@@ -119,6 +121,7 @@ function SubSection({
   rightSrc,
   leftSrc,
   mobileIndex,
+  btnColor,
 }: {
   bg: string;
   reverse: boolean;
@@ -128,12 +131,13 @@ function SubSection({
   rightSrc: string;
   leftSrc: string;
   mobileIndex: number;
+  btnColor?: string;
 }) {
   const isRight = mobileIndex % 2 === 1;
   return (
     <div
-      className="relative w-full overflow-hidden"
-      style={{ backgroundColor: bg, minHeight: 'clamp(200px, 28vw, 455px)' }}
+      className="relative w-full overflow-hidden lg:min-h-[80vh]"
+      style={{ backgroundColor: bg }}
     >
       {/* Mobile only: side accent bar */}
       <div
@@ -151,7 +155,7 @@ function SubSection({
           padding: 'clamp(2rem, 4vw, 65px) clamp(1.5rem, 3.5vw, 52px)',
         }}
       >
-        <TextBlock title={title} paragraphs={paragraphs} mobileIndex={mobileIndex} />
+        <TextBlock title={title} paragraphs={paragraphs} mobileIndex={mobileIndex} btnColor={btnColor} />
         <ImageStack bgSrc={bgSrc} rightSrc={rightSrc} leftSrc={leftSrc} />
       </div>
       </ScrollReveal>
@@ -185,6 +189,7 @@ export default function AboutSection() {
       <SubSection
         bg="var(--color-bg2)"
         reverse={false}
+        btnColor="#f9b61a"
         title="Who We Are"
         paragraphs={[
           'We are a trusted team of engineers and consultants delivering scalable solutions across embedded systems, IoT, cloud, and full-stack platforms—working closely with you for seamless execution.',
@@ -198,6 +203,7 @@ export default function AboutSection() {
       <SubSection
         bg="var(--color-bg1)"
         reverse={true}
+        btnColor="#2acc14"
         title="Problem We Solve"
         paragraphs={[
           'We help your organization reduce development overhead with on-demand expertise—eliminating the need for large in-house teams and enabling faster, cost-efficient execution.',
@@ -211,6 +217,7 @@ export default function AboutSection() {
       <SubSection
         bg="var(--color-bg2)"
         reverse={false}
+        btnColor="#e8d741"
         title="What We Do"
         paragraphs={[
           'We design and deliver end-to-end solutions across embedded, IoT, cloud, and full-stack platforms—focused on scalable design and strong system integration.',
@@ -224,6 +231,7 @@ export default function AboutSection() {
       <SubSection
         bg="var(--color-bg1)"
         reverse={true}
+        btnColor="#3a43ed"
         title="Our Expertise"
         paragraphs={[
           'Our expertise spans Mortgage Applications, IoT, Automotive systems, E-commerce, EdTech, and data analytics—delivering practical, scalable solutions aligned with your business goals.',
@@ -237,6 +245,7 @@ export default function AboutSection() {
       <SubSection
         bg="var(--color-bg2)"
         reverse={false}
+        btnColor="#c9f270"
         title="Process We Follow"
         paragraphs={[
           'We follow a structured approach from requirement gathering and system design to milestone-based development—ensuring clarity, transparency, and steady progress.',

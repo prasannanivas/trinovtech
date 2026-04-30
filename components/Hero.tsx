@@ -8,18 +8,17 @@ export default function Hero({ config }: Props) {
   return (
     <section
       id="home"
-      className="w-full overflow-hidden"
+      className="w-full overflow-hidden lg:h-[100dvh] lg:flex lg:items-center"
       style={{ backgroundColor: 'var(--color-bg1)', fontFamily: 'var(--font-heading)' }}
     >
       <div
-        className="mx-auto flex flex-row items-center justify-between"
+        className="mx-auto flex flex-row items-center justify-between w-full"
         style={{
           maxWidth: '1920px',
           paddingLeft: 'clamp(1.5rem, 5.5vw, 70px)',
           paddingRight: 'clamp(1.5rem, 3vw, 39px)',
-          paddingTop: 'clamp(2rem, 7vw, 85px)',
+          paddingTop: 'clamp(1rem, 7vw, 15px)',
           paddingBottom: 'clamp(2rem, 5vw, 65px)',
-          minHeight: 'clamp(300px, 45vw, 560px)',
         }}
       >
         {/* Left: Text + CTA */}
@@ -66,11 +65,10 @@ export default function Hero({ config }: Props) {
           {/* Know More Button */}
           <a
             href="#solutions"
-            className="inline-flex items-center gap-3 font-normal self-start transition-opacity hover:opacity-90 hero-text-anim hero-text-anim-delay-2"
+            className="inline-flex items-center gap-3 font-normal self-start transition-opacity hover:opacity-90 hero-text-anim hero-text-anim-delay-2 whitespace-nowrap"
             style={{
               backgroundColor: 'var(--color-primary)',
               color: 'var(--color-bg1)',
-              width: 'clamp(120px, 9vw, 132px)',
               height: '32px',
               paddingLeft: '24px',
               paddingRight: '24px',

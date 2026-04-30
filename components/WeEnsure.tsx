@@ -12,7 +12,7 @@ export default function WeEnsure({ config }: Props) {
   return (
     <section
       id="about"
-      className="w-full"
+      className="w-full lg:h-[100dvh] lg:flex lg:items-center"
       style={{ backgroundColor: 'var(--color-bg1)', fontFamily: 'var(--font-body)' }}
     >
       <div
