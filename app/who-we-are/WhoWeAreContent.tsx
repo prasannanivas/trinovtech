@@ -264,11 +264,11 @@ const panelVariants = {
   enter: { opacity: 0, y: 64, scale: 0.96 },
   center: {
     opacity: 1, y: 0, scale: 1,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   },
   exit: {
     opacity: 0, y: -44, scale: 1.02,
-    transition: { duration: 0.35, ease: [0.55, 0, 1, 0.45] },
+    transition: { duration: 0.35, ease: [0.55, 0, 1, 0.45] as [number, number, number, number] },
   },
 };
 
